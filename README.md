@@ -14,7 +14,7 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./test_images/solidWhiteRight.jpg "Original"
-[image1]: ./test_images/solidWhiteRight.jpg "Original"
+[image2]: ./examples/laneLines_thirdPass.jpg "Annoitated"
 
 
 ---
@@ -25,6 +25,10 @@ The goals / steps of this project are the following:
 The pipeline works on individual images. Taking an original image that looks lik this:
 
 ![Original Image][image1]
+
+and output an annoitated version of the image showing the lane lines. 
+
+![Annoitated Image][image2]
 
 My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
 

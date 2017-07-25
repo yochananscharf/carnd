@@ -14,7 +14,7 @@ The goals / steps of this project are the following:
 [//]: # (Image References)
 
 [image1]: ./test_images/solidWhiteRight.jpg "Original"
-[image2]: ./examples/laneLines_thirdPass.jpg "Annoitated"
+[image2]: ./test_images/laneLines_thirdPass.jpg "Annoitated"
 
 
 ---
@@ -30,11 +30,19 @@ and output an annoitated version of the image showing the lane lines.
 
 ![Annoitated Image][image2]
 
-My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
+My pipeline consisted of 5 steps. 
+1. First, convert the images to grayscale.
+2. then apply Gaussian smoothing.
+3. The next step is to apply the Canny edge detection  
+4. Create a masked edges image for region of interest.
+5. Run Hough on edge detected image
+6. Combine original image with lines
 
-In order to draw a single line on the left and right lanes, I modified the draw_lines() function by ...
 
-If you'd like to include images to show how the pipeline works, here is how to include an image: 
+In order to draw a single line on the left and right lanes, I modified the draw_lines() function by using the code 
+
+posted on the forums. I hope this is acceptable as I tried really hard doing my own and gave up for now.
+
 
 
 
@@ -42,13 +50,12 @@ If you'd like to include images to show how the pipeline works, here is how to i
 ### 2. Identify potential shortcomings with your current pipeline
 
 
-One potential shortcoming would be what would happen when ... 
+One potential shortcoming would be what would happen when the line curves. 
 
-Another shortcoming could be ...
+Another shortcoming could be when there are cars in the region of interest, it would cause the single line to go awry.
 
 
 ### 3. Suggest possible improvements to your pipeline
 
-A possible improvement would be to ...
+A possible improvement would be to extrapolate the left and right lines to top and bottom of the region of interest instead of the min and max of the detected lines.
 
-Another potential improvement could be to ...

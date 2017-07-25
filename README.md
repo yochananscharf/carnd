@@ -13,13 +13,18 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./examples/grayscale.jpg "Grayscale"
+[image1]: ./test_images/solidWhiteRight.jpg "Original"
+[image1]: ./test_images/solidWhiteRight.jpg "Original"
+
 
 ---
 
 ### Reflection
 
 ### 1. Describe your pipeline. As part of the description, explain how you modified the draw_lines() function.
+The pipeline works on individual images. Taking an original image that looks lik this:
+
+![Original Image][image1]
 
 My pipeline consisted of 5 steps. First, I converted the images to grayscale, then I .... 
 
@@ -27,7 +32,7 @@ In order to draw a single line on the left and right lanes, I modified the draw_
 
 If you'd like to include images to show how the pipeline works, here is how to include an image: 
 
-![alt text][image1]
+
 
 
 ### 2. Identify potential shortcomings with your current pipeline

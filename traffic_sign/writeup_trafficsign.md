@@ -49,7 +49,8 @@ signs data set:
 
 Here is an exploratory visualization of the data set. It is a bar chart showing how the data ...
 
-![Barplot of the number if signs of each class.][image1]
+
+![alt text][image1]
 
 ###Design and Test a Model Architecture
 

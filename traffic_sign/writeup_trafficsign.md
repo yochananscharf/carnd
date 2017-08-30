@@ -83,73 +83,84 @@ My final model consisted of the following layers:
 
 | Layer         		|     Description	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Input         		| 32x32x3 RGB image   							| 
-| Convolution 3x3     	| 1x1 stride, same padding, outputs 32x32x64 	|
+| Input         		| 64x64x3 RGB image   							| 
+| Convolution 5x5     	| 1x1 stride, no padding (valid) , outputs 60x60x16 	|
+| RELU					|												|
+| Max pooling	      	| 2x2 stride,  outputs 30x30x16 				|
+| Convolution 5x5     	| 1x1 stride, no padding (valid) , outputs 26x26x32 	|
 | RELU					|												|
 | Max pooling	      	| 2x2 stride,  outputs 16x16x64 				|
-| Convolution 3x3	    | etc.      									|
-| Fully connected		| etc.        									|
-| Softmax				| etc.        									|
-|						|												|
-|						|												|
+| Flatten  |  13x13x32 | output 5408.
+| Fully connected		| 5408        									|outputs 240 
+| Relu
+| Fully connected		| 240        									|outputs 168 
+| Relu
+| Fully connected		| 168        									|outputs 43
+| Logits				| etc.        									|
+
  
 
 
-####3. Describe how you trained your model. The discussion can include the type of optimizer, the batch size, number of epochs and any hyperparameters such as learning rate.
+#### 3. Training the model. 
 
-To train the model, I used an ....
+To train the model, I used an softmax_cross_entropy_with_logits cross entropy and Adam optimizer.
+Learning rate of 0.001 and a batch size of 32.
 
-####4. Describe the approach taken for finding a solution and getting the validation set accuracy to be at least 0.93. Include in the discussion the results on the training, validation and test sets and where in the code these were calculated. Your approach may have been an iterative process, in which case, outline the steps you took to get to the final solution and why you chose those steps. Perhaps your solution involved an already well known implementation or architecture. In this case, discuss why you think the architecture is suitable for the current problem.
+#### 4. At first I didn't get to the 93% accuracy until I changed the Lenet architechture and preprocessed the images as oulined above. Training for 16 Epochs got the following results:
 
 My final model results were:
-* training set accuracy of ?
-* validation set accuracy of ? 
-* test set accuracy of ?
+* training set accuracy of 0.998
+* validation set accuracy of 0.954 
+* test set accuracy of 0.944
 
-If an iterative approach was chosen:
-* What was the first architecture that was tried and why was it chosen?
-* What were some problems with the initial architecture?
-* How was the architecture adjusted and why was it adjusted? Typical adjustments could include choosing a different model architecture, adding or taking away layers (pooling, dropout, convolution, etc), using an activation function or changing the activation function. One common justification for adjusting an architecture would be due to overfitting or underfitting. A high accuracy on the training set but low accuracy on the validation set indicates over fitting; a low accuracy on both sets indicates under fitting.
-* Which parameters were tuned? How were they adjusted and why?
-* What are some of the important design choices and why were they chosen? For example, why might a convolution layer work well with this problem? How might a dropout layer help with creating a successful model?
 
-If a well known architecture was chosen:
-* What architecture was chosen?
-* Why did you believe it would be relevant to the traffic sign application?
-* How does the final model's accuracy on the training, validation and test set provide evidence that the model is working well?
+* I chose the Lenet architecture for it's simplicity. Changed the number of ouputs of the activation layer and the number of filters at each convolution layer and of course the input dimension to 64 by 64.
+* The Model generalises pretty well to the validation and test sets.
  
 
-###Test a Model on New Images
+### Test a Model on New Images
 
-####1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
+#### 1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.
 
 Here are five German traffic signs that I found on the web:
 
 ![alt text][image4] ![alt text][image5] ![alt text][image6] 
 ![alt text][image7] ![alt text][image8]
 
-The first image might be difficult to classify because ...
+The first image might be difficult to classify because of the small porportion of the sign to the image.
+The therd image might be difficult to classify because of the watermarks all over the image.
 
-####2. Discuss the model's predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set (OPTIONAL: Discuss the results in more detail as described in the "Stand Out Suggestions" part of the rubric).
+
+#### 2. Prediction results on the new traffic-signs.
 
 Here are the results of the prediction:
 
 | Image			        |     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 
-| Stop Sign      		| Stop sign   									| 
-| U-turn     			| U-turn 										|
-| Yield					| Yield											|
-| 100 km/h	      		| Bumpy Road					 				|
-| Slippery Road			| Slippery Road      							|
+| Ahead only    		| Speed limit (80km/h)  									| 
+| Turn right ahead    			|  Turn right ahead										|
+| Pedestrians				| Yield										|
+| Bumpy road	      		| Bumpy Road					 				|
+| No entry			| No entry    							|
 
 
-The model was able to correctly guess 4 of the 5 traffic signs, which gives an accuracy of 80%. This compares favorably to the accuracy on the test set of ...
+The model was able to correctly guess 3 of the 5 traffic signs, which gives an accuracy of 60%. This does no compare favorably to the accuracy on the test set of 94%.
 
 ####3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability. (OPTIONAL: as described in the "Stand Out Suggestions" part of the rubric, visualizations can also be provided such as bar charts)
 
 The code for making predictions on my final model is located in the 11th cell of the Ipython notebook.
 
 For the first image, the model is relatively sure that this is a stop sign (probability of 0.6), and the image does contain a stop sign. The top five soft max probabilities were
+
+
+
+|sign_0	|sign_1	|sign_2	|sign_3	|sign_4|
+|:----------:|:------------------:|:-----------------:|:----------------:|:-------------:|
+|Speed limit (80km/h), 0.0)|	(Turn right ahead, 21.0)|	(Yield, 18.0)	|(Bumpy road, 33.0)|	(No entry, 37.0)|
+|(Bicycles crossing, -0.0)|	(Ahead only, 9.0)	|(Priority road, 7.0)|	(Dangerous curve to the right, 8.0)	|(Speed limit(20km/h), 4.0)|
+|(End of speed limit (80km/h), -0.0)	|(No passing for vehicles over 3.5 metric tons,6.0)|(End of all speed and passing limits, 5.0)|	(Bicycles crossing, 7.0)|	(Stop, 2.0)|
+|	(No entry, -0.0)	|(Go straight or left, 6.0)|	(Ahead only, 1.0)	|(Speed limit (20km/h), 7.0)|	(Keep right, 0.0)|
+|(Speed limit (30km/h), -2.0)|	(Speed limit (80km/h), 5.0)	|(No vehicles, -1.0)	|(Speed limit (60km/h), 5.0)|	(Traffic signals, -1.0)|
 
 | Probability         	|     Prediction	        					| 
 |:---------------------:|:---------------------------------------------:| 

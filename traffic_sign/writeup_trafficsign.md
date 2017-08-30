@@ -162,17 +162,4 @@ For the first image, the model is relatively sure that this is a stop sign (prob
 |	(No entry, -0.0)	|(Go straight or left, 6.0)|	(Ahead only, 1.0)	|(Speed limit (20km/h), 7.0)|	(Keep right, 0.0)|
 |(Speed limit (30km/h), -2.0)|	(Speed limit (80km/h), 5.0)	|(No vehicles, -1.0)	|(Speed limit (60km/h), 5.0)|	(Traffic signals, -1.0)|
 
-| Probability         	|     Prediction	        					| 
-|:---------------------:|:---------------------------------------------:| 
-| .60         			| Stop sign   									| 
-| .20     				| U-turn 										|
-| .05					| Yield											|
-| .04	      			| Bumpy Road					 				|
-| .01				    | Slippery Road      							|
-
-
-For the second image ... 
-
-### (Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)
-####1. Discuss the visual output of your trained network's feature maps. What characteristics did the neural network use to make classifications?
 

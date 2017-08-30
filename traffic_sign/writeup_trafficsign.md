@@ -13,7 +13,7 @@ The goals / steps of this project are the following:
 
 [//]: # (Image References)
 
-[image1]: ./visualization.png "Visualization"
+[image1]: ./visualization.jpg "Visualization"
 [image4]: ./signs/traffic_sign_0.jpg "Traffic Sign 1"
 [image5]: ./signs/traffic_sign_1.jpg "Traffic Sign 2"
 [image6]: ./signs/traffic_sign_2.jpg "Traffic Sign 3"
@@ -70,7 +70,7 @@ To add more data to the the data set, I used the following techniques because ..
 
 Here is an example of an original image and an augmented image:
 
-![alt text][image3]
+[image3]
 
 The difference between the original data set and the augmented data set is the following ... 
 

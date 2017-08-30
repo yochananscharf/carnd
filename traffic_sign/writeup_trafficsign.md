@@ -96,7 +96,7 @@ My final model consisted of the following layers:
 | Fully connected		| 240        									|outputs 168 
 | Relu
 | Fully connected		| 168        									|outputs 43
-| Logits				| etc.        									|
+| Logits				|         									|outputs 43
 
  
 

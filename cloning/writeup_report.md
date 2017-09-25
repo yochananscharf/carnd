@@ -51,7 +51,7 @@ The model.py file contains the code for training and saving the convolution neur
 
 My model consists of a convolution neural network with 3x3 filter sizes and depths between 32 and 128. 
 
-The model includes RELU layers to introduce nonlinearity (code line 20), and the data is normalized in the model using a Keras batch normalization layer (code line 18). 
+The model includes RELU layers to introduce nonlinearity (code line 40), and the data is normalized in the model using a Keras batch normalization layer (code line 39). 
 
 #### 2. Attempts to reduce overfitting in the model
 
@@ -99,7 +99,7 @@ To capture good driving behavior, I first recorded two laps on track one using c
 
 ![alt text][image2]
 
-I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to .... These images show what a recovery looks like starting from ... :
+I then recorded the vehicle recovering from the left side and right sides of the road back to center so that the vehicle would learn to recover. These images show what a recovery looks like starting from straddling the road edge :
 
 ![alt text][image3]
 

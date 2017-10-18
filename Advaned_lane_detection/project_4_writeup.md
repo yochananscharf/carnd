@@ -119,3 +119,5 @@ Here's a [link to my video result](./project_video_result.mp4)
 Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  
 I did warping before tresholding. This is probably the reason the thrasholding worked so well with a single color channel.
 For finding the lines I used the sliding window for every frame. Improvement would be to use the first lines as a starting point for subsequent ones thus saving run-time.
+
+### Some of the code was taken from the course and the forums.

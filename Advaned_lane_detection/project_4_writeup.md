@@ -79,7 +79,7 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 3. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a just color and thresholding of a single channel to generate a binary image with surprising results (thresholding steps at lines 116 through 124 in `advanced_lane.py`. The image is first converted to the HSV color space. The V channel which represents the value (or luminance) was thresholded for high values (220 - 255) . Here's an example of my output for this step. 
+I used a just color and thresholding of a single channel to generate a binary image with surprising results (thresholding steps at lines 116 through 124 in `advanced_lane.py`. The image is first converted to the HSV color space. The V channel which represents the value (or luminance) was thresholded for high values (230 - 255) . Here's an example of my output for this step. 
 
 ![alt text][image3]
 

@@ -1,6 +1,3 @@
-## Writeup Template
-
-### You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
 
 ---
 
@@ -57,6 +54,8 @@ I then used the output `objpoints` and `imgpoints` to compute the camera calibra
 To demonstrate this step, I will describe how I apply the distortion correction to one of the test images like this one:
 ![alt text][image2]
 
+As can be seen in the above image, the distortion has been corrected using the cv2 undistort function by passing the the camera calibration and distortion coefficients calculated for this particular camera used for recording the lane video.
+
 #### 2. Describe how (and identify where in your code) you performed a perspective transform and provide an example of a transformed image.
 
 The code for my perspective transform includes a function called `warper()`, which appears in lines 1 through 8 in the file `example.py` (output_images/examples/example.py) (or, for example, in the 3rd code cell of the IPython notebook).  The `warper()` function takes as inputs an image (`img`), as well as source (`src`) and destination (`dst`) points.  I chose the hardcode the source and destination points in the following manner:
@@ -80,7 +79,7 @@ I verified that my perspective transform was working as expected by drawing the 
 
 #### 3. Describe how (and identify where in your code) you used color transforms, gradients or other methods to create a thresholded binary image.  Provide an example of a binary image result.
 
-I used a just color and thresholding of a single channel to generate a binary image with surprising results (thresholding steps at lines 116 through 124 in `advanced_lane.py`).  Here's an example of my output for this step. 
+I used a just color and thresholding of a single channel to generate a binary image with surprising results (thresholding steps at lines 116 through 124 in `advanced_lane.py`. The image is first converted to the HSV color space. The V channel which represents the value (or luminance) was thresholded for high values (220 - 255) . Here's an example of my output for this step. 
 
 ![alt text][image3]
 
@@ -88,17 +87,17 @@ I used a just color and thresholding of a single channel to generate a binary im
 
 #### 4. Describe how (and identify where in your code) you identified lane-line pixels and fit their positions with a polynomial?
 
-Then I did some other stuff and fit my lane lines with a 2nd order polynomial. code in line 127 through 202 in `advanced_lane.py`:
+Then I implemented the sliding windows code provided by Udacity. First the first lane points are found using a historam of number of pixels. Then the warped image is devided into 9 windows. Iterating through the window and updating the center of the windows gives a representation of the lane line.I then fit my lane lines with a 2nd order polynomial. code in line 127 through 202 in `advanced_lane.py`:
 
 
 
 #### 5. Describe how (and identify where in your code) you calculated the radius of curvature of the lane and the position of the vehicle with respect to center.
 
-I did this in lines # through # in my code in `advanced_lane.py`
+I did this in lines 265 through 278 in my code in `advanced_lane.py`. This is done by measuring the curvature at the bottom of the picture based on the 2nd order polynomial that has been fitted on the lane lines.
 
 #### 6. Provide an example image of your result plotted back down onto the road such that the lane area is identified clearly.
 
-I implemented this step in lines 265 through 278 in my code in `yet_another_file.py` in the function `map_lane()`.  Here is an example of my result on a test image:
+I implemented this step in lines 245 through 262 in my code in `advanced_lane.py` in the function `overlay_unwarp`.  Here is an example of my result on a test image:
 
 ![alt text][image6]
 

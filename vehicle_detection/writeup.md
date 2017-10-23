@@ -13,17 +13,15 @@ The goals / steps of this project are the following:
 * Estimate a bounding box for vehicles detected.
 
 [//]: # (Image References)
-[image1]: ./examples/car_not_car.png
-[image2]: ./examples/HOG_example.jpg
-[image3]: ./examples/sliding_windows.jpg
-[image4]: ./examples/sliding_window.jpg
-[image5]: ./examples/bboxes_and_heat.png
-[image6]: ./examples/labels_map.png
-[image7]: ./examples/output_bboxes.png
+[image1]: ./examples/car_noncar.jpg
+[image3]: ./examples/all_windows.jpg
+[image4]: ./examples/bboxes.jpg
+[image5]: ./examples/output.jpg
+[image7]: ./examples/heatmap.jpg
 [video1]: ./project_video.mp4
 
 ## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
-###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
+### Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
 ### Writeup / README
@@ -43,9 +41,8 @@ I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an 
 ![alt text][image1]
 
 I used the cv2 HOGDescriptor for extracting HOG features.
-I applied the extraction on the car and notcar images after converting thme to grayscale colorspace.
+I applied the extraction on the car and notcar images after converting them to grayscale colorspace. No plotting for cv2 Hog sorry.
 
-![alt text][image2]
 
 #### 2. Explain how you settled on your final choice of HOG parameters.
 
@@ -85,7 +82,7 @@ Image (as the Y value increases). The cars are bigger when nearer to the camera.
 Ultimately I searched on the changing sized windows over the image. Resizing each windoe to the 64 by 64 size the Classifyer 
 was trained on. using the same features as in the training: HOG (grayscale), Spatial binning (HSV) and histograms(RGB), which provided a nice result.  Here are some example images:
 
-![alt text][image4]
+![alt text][image5]
 ---
 
 ### Video Implementation
@@ -102,17 +99,17 @@ Here's an example result showing the heatmap from a single frame, the result of 
 
 ### Here are all the possible windows:
 
-![alt text][image5]
+![alt text][image3]
 
 ### Here are all the positive windows:
 
-![alt text][image6]
+![alt text][image4]
 
 ### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
 ![alt text][image7]
 
-### Here the resulting bounding boxes are drawn onto the last frame in the series:
-![alt text][image7]
+### Here the resulting bounding boxes are drawn onto the frame in:
+![alt text][image5]
 
 
 
@@ -124,5 +121,6 @@ Here's an example result showing the heatmap from a single frame, the result of 
 
 Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  After trying on the SVM for 9.29 Seconds with a test accuracy of 0.986 I tried the ANN approach. This got me an accuracy of 0.998 a full 1% improvement
 I implemented an object oriented `VehicleTracker()` class for combining heatmaps over several frames.
-If I'd had time I'd probably try different parameters for the HOG feature extraction and try it on the different color channels instead of just grayscale. Try some more ways to supress false positives, maybe 
+If I'd had time I'd probably try different parameters for the HOG feature extraction and try it on the different color channels instead of just grayscale. Try some more ways to supress false positives, I was thinking that blurring the images 
+might help.
 

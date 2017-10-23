@@ -107,7 +107,7 @@ def binarize(image):
     """
     img_hsv = cv2.cvtColor(image, cv2.COLOR_RGB2HSV)
     v_channel = img_hsv[:,:,2]
-    v_binary_thresh = threshold(v_channel,  (220, 255))
+    v_binary_thresh = threshold(v_channel,  (200, 255))
     binarized = np.zeros_like(v_channel)
     binarized[(v_binary_thresh == 1) ]=1
     return binarized

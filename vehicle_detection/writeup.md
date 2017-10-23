@@ -34,7 +34,7 @@ You're reading it!
 
 #### 1. Explain how (and identify where in your code) you extracted HOG features from the training images.
 
-The code for this step is contained in lines # through # of the file called `vehicle_detection.py`).  
+The code for this step is contained in lines 29 through 99 of the file called `vehicle_detection.py`).  
 
 I started by reading in all the `vehicle` and `non-vehicle` images.  Here is an example of one of each of the `vehicle` and `non-vehicle` classes:
 
@@ -119,7 +119,7 @@ Here's an example result showing the heatmap from a single frame, the result of 
 
 #### 1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
 
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  After trying on the SVM for 9.29 Seconds with a test accuracy of 0.986 I tried the ANN approach. This got me an accuracy of 0.998 a full 1% improvement
+Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  After trying on the SVM for 9.29 Seconds with a test accuracy of 0.986 I tried the ANN approach. This got me an accuracy of 0.998 a full 1% improvement. The model and weights can be found in the repository.
 I implemented an object oriented `VehicleTracker()` class for combining heatmaps over several frames.
 If I'd had time I'd probably try different parameters for the HOG feature extraction and try it on the different color channels instead of just grayscale. Try some more ways to supress false positives, I was thinking that blurring the images 
 might help.

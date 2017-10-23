@@ -1,5 +1,3 @@
-##Writeup Template
-###You can use this file as a template for your writeup if you want to submit it as a markdown file, but feel free to use some other method and submit a pdf if you prefer.
 
 ---
 
@@ -65,13 +63,15 @@ L2HysThreshold = 0.2
 gammaCorrection =0
 nlevels = 64
 
+For the spatial binning I used 24 by 24 binning to save processing time.
+
 #### 3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
 I trained a fully connected neural network using the HOG features plus spatially binned color for the HSV color-space and the binned colour values histogram for the RGB channels. The neural network is made up of an input and batchnormalization layer two dense layers with 128 neurons each an an ouput layer with a single neuron for binary classification (car noncar). 
 Before training the network I trained and preprocessed the feature vectors using an SkLearn StandardScaler.
 
 
-###Sliding Window Search
+### Sliding Window Search
 
 #### 1. Describe how (and identify where in your code) you implemented a sliding window search.  How did you decide what scales to search and how much to overlap windows?
 
@@ -100,12 +100,16 @@ I recorded the positions of positive detections in each frame of the video.  Fro
 
 Here's an example result showing the heatmap from a single frame, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the image:
 
-### Here are six frames and their corresponding heatmaps:
+### Here are all the possible windows:
 
 ![alt text][image5]
 
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
+### Here are all the positive windows:
+
 ![alt text][image6]
+
+### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
+![alt text][image7]
 
 ### Here the resulting bounding boxes are drawn onto the last frame in the series:
 ![alt text][image7]
@@ -120,5 +124,5 @@ Here's an example result showing the heatmap from a single frame, the result of 
 
 Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further.  After trying on the SVM for 9.29 Seconds with a test accuracy of 0.986 I tried the ANN approach. This got me an accuracy of 0.998 a full 1% improvement
 I implemented an object oriented `VehicleTracker()` class for combining heatmaps over several frames.
-If I'd had time I'd probably try different parameters for the HOG feature extraction and try it on the different color channels instead of just grayscale. 
+If I'd had time I'd probably try different parameters for the HOG feature extraction and try it on the different color channels instead of just grayscale. Try some more ways to supress false positives, maybe 
 
